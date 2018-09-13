@@ -1,4 +1,4 @@
-# Ecommerce Bakery
+# Ecommerce Bakery :cake:
 This project is an ongoing project being developed during T1CG WebDev meetups
 held every second Wesdnesday of every month.
 
@@ -27,7 +27,7 @@ Happy Coding :tada: :rocket: :metal:
 
 Mac | Windows | Purpose
 ------------ | ------------- | -------------
-Install [Homebrew](https://brew.sh/) :beers: |  Install [Chocolatey](https://chocolatey.org/) :cake: | Package Manager for Installing Almost Everything!
+Install [Homebrew](https://brew.sh/) :beers: |  Install [Chocolatey](https://chocolatey.org/) :doughnut: | Package Manager for Installing Almost Everything!
 [Install Node with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew ) | [Install Node with Chocolatey](https://chocolatey.org/packages/nodejs.install) | Installing Node will allow our machines to run javascript code as well install the O' So Important NPM (Node Package Manager)!
 Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Allow us to manipulate and edit our source code as well as provide extra tools to support and ease programming work flows.
 Install create-react-app `npm i create-react-app -g` | Install create-react-app `npm i create-react-app -g` | Allow you to run create-react-app software.
