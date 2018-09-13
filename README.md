@@ -25,7 +25,7 @@ Happy Coding :tada: :rocket: :metal:
 
 *Note*: If you run into errors, __Google__ is every developers best friend to help troubleshoot! Also your human best developer friends are great troubleshooting resources :hand:
 
-<table>
+<table width="100%">
   <tr>
     <th>Mac</th>
     <th>Windows</th>
