@@ -2,7 +2,7 @@
 This project is an ongoing project being developed during T1CG WebDev meetups
 held every second Wesdnesday of every month.
 
-We hope to have meetup participants to review, play, and contribute to the project.
+We hope to have meetup participants review, play with, and contribute to the project.
 
 Below are some instructions and guidelines to help get you started.
 
