@@ -26,14 +26,14 @@ Happy Coding :tada: :rocket: :metal:
 *Note*: If you run into errors, __Google__ is every developers best friend to help troubleshoot! Also your human best developer friends are great troubleshooting resources :hand:
 
 Mac | Windows | Purpose
------------- | ------------- | ------------- 
-1. Install [Homebrew](https://brew.sh/) :beers: | 1. Install [Chocolatey](https://chocolatey.org/) :cake: | Package Manager for Installing Almost Everything!
-2. [Install Node with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew ) | 2. [Install Node with Chocolatey](https://chocolatey.org/packages/nodejs.install) | Installing Node will allow our machines to run javascript code as well install the O' So Important NPM (Node Package Manager)!
-3. Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Allow us to manipulate and edit our source code as well as provide extra tools to support and ease programming work flows.
-4. Install create-react-app `npm i create-react-app -g` | 4. Install create-react-app `npm i create-react-app -g` | Allow you to run create-react-app software.
-5. [Install MongoDB with Homebrew](https://dbamohsin.wordpress.com/2017/05/02/installing-mongodb-on-a-mac-with-homebrew/) | 5. [Install MongoDB with Chocolatey](https://kjng.github.io/2017/05/17/mongodb-windows.html) <-- This guide is great to get you started but forgets an important step, the command to actually install mongo.  It's `choco install mongodb`| The database software we will be using for this application.
-6. Intall Git with Homebrew `brew install git` | 6. [Intall Git with Chocolatey](https://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows/#using-chocolatey) | Git is our version control tool allowing us store our source code online and locally while also adding tooling for collaboration and historical versioning.
-7. Clone this repository `git clone https://github.com/t1cgAcademy/ecommerceBakery.git` | Clone this repository `git clone https://github.com/t1cgAcademy/ecommerceBakery.git` | Now you have a version of the project source code on your local machine :smile:
+------------ | ------------- | -------------
+1) Install [Homebrew](https://brew.sh/) :beers: | 1) Install [Chocolatey](https://chocolatey.org/) :cake: | Package Manager for Installing Almost Everything!
+2) [Install Node with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew ) | 2) [Install Node with Chocolatey](https://chocolatey.org/packages/nodejs.install) | Installing Node will allow our machines to run javascript code as well install the O' So Important NPM (Node Package Manager)!
+3) Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| 3) Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Allow us to manipulate and edit our source code as well as provide extra tools to support and ease programming work flows.
+4) Install create-react-app `npm i create-react-app -g` | 4) Install create-react-app `npm i create-react-app -g` | Allow you to run create-react-app software.
+5) [Install MongoDB with Homebrew](https://dbamohsin.wordpress.com/2017/05/02/installing-mongodb-on-a-mac-with-homebrew/) | 5) [Install MongoDB with Chocolatey](https://kjng.github.io/2017/05/17/mongodb-windows.html) <-- This guide is great to get you started but forgets an important step, the command to actually install mongo.  It's `choco install mongodb`| The database software we will be using for this application.
+6) Intall Git with Homebrew `brew install git` | 6) [Intall Git with Chocolatey](https://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows/#using-chocolatey) | Git is our version control tool allowing us store our source code online and locally while also adding tooling for collaboration and historical versioning.
+7) Clone this repository `git clone https://github.com/t1cgAcademy/ecommerceBakery.git` | 7) Clone this repository `git clone https://github.com/t1cgAcademy/ecommerceBakery.git` | Now you have a version of the project source code on your local machine :smile:
 
 ---
 ## Git Guide
