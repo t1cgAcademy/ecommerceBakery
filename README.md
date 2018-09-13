@@ -25,15 +25,47 @@ Happy Coding :tada: :rocket: :metal:
 
 *Note*: If you run into errors, __Google__ is every developers best friend to help troubleshoot! Also your human best developer friends are great troubleshooting resources :hand:
 
-Mac | Windows | Purpose
------------- | ------------- | -------------
-Install [Homebrew](https://brew.sh/) :beers: |  Install [Chocolatey](https://chocolatey.org/) :doughnut: | Package Manager for Installing Almost Everything!
-[Install Node with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew ) | [Install Node with Chocolatey](https://chocolatey.org/packages/nodejs.install) | Installing Node will allow our machines to run javascript code as well install the O' So Important NPM (Node Package Manager)!
-Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Allow us to manipulate and edit our source code as well as provide extra tools to support and ease programming work flows.
-Install create-react-app `npm i create-react-app -g` | Install create-react-app `npm i create-react-app -g` | Allow you to run create-react-app software.
-[Install MongoDB with Homebrew](https://dbamohsin.wordpress.com/2017/05/02/installing-mongodb-on-a-mac-with-homebrew/) | [Install MongoDB with Chocolatey](https://kjng.github.io/2017/05/17/mongodb-windows.html) <-- This guide is great to get you started but forgets an important step, the command to actually install mongo.  It's `choco install mongodb`| The database software we will be using for this application.
-Intall Git with Homebrew `brew install git` | [Intall Git with Chocolatey](https://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows/#using-chocolatey) | Git is our version control tool allowing us store our source code online and locally while also adding tooling for collaboration and historical versioning.
-Clone this repository `git clone https://github.com/t1cgAcademy/ecommerceBakery.git` | Clone this repository `git clone https://github.com/t1cgAcademy/ecommerceBakery.git` | Now you have a version of the project source code on your local machine :smile:
+<table>
+  <tr>
+    <th>Mac</th>
+    <th>Windows</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>Install [Homebrew](https://brew.sh/) :beers:</td>
+    <td>Install [Chocolatey](https://chocolatey.org/) :doughnut:</td>
+    <td>Package Manager for Installing Almost Everything!</td>
+  </tr>
+  <tr>
+    <td>[Install Node with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew )</td>
+    <td>[Install Node with Chocolatey](https://chocolatey.org/packages/nodejs.install)</td>
+    <td>Installing Node will allow our machines to run javascript code as well install the O' So Important NPM (Node Package Manager)!</td>
+  </tr>
+  <tr>
+    <td>Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))</td>
+    <td>Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))</td>
+    <td>Allow us to manipulate and edit our source code as well as provide extra tools to support and ease programming work flows.</td>
+  </tr>
+  <tr>
+    <td>Install create-react-app `npm i create-react-app -g`</td>
+    <td>Install create-react-app `npm i create-react-app -g`</td>
+    <td>Allow you to run create-react-app software.</td>
+  </tr>
+  <tr>
+    <td>[Install MongoDB with Homebrew](https://dbamohsin.wordpress.com/2017/05/02/installing-mongodb-on-a-mac-with-homebrew/)</td>
+    <td>[Install MongoDB with Chocolatey](https://kjng.github.io/2017/05/17/mongodb-windows.html) <-- This guide is great to get you started but forgets an important step, the command to actually install mongo.  It's `choco install mongodb`</td>
+    <td>The database software we will be using for this application.</td>
+  </tr>
+  <tr>
+    <td>Intall Git with Homebrew `brew install git` </td>
+    <td>[Intall Git with Chocolatey](https://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows/#using-chocolatey)</td>
+    <td>Git is our version control tool allowing us store our source code online and locally while also adding tooling for collaboration and historical versioning.</td>
+  </tr>
+  <tr>
+    <td>Clone this repository</td>
+    <td>Clone this repository</td>
+    <td>Now you have a version of the project source code on your local machine :smile:</td>
+  </tr>
 
 ---
 ## Git Guide
@@ -101,3 +133,23 @@ $ git merge [branch]
 Combines bookmark’s branch into current local branch
 ```
 ---
+## Helpful Links For Learning
+##### HTML
+- [HTML Cheat Sheet](https://digital.com/tools/html-cheatsheet/)
+- [HTML Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [HTML Tutorial](https://developer.mozilla.org/en-US/docs/Learn/HTML)
+- [HTML Tutorials](http://www.htmldog.com/guides/html/beginner/)
+
+###### CSS
+- [CSS Cheat Sheet](https://www.onblastblog.com/css3-cheat-sheet/)
+- [CSS Tutorial](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS)
+- [CSS Tutorial](http://www.htmldog.com/guides/css/beginner/)
+
+##### JS
+- [JS Cheat Sheet](https://github.com/mbeaudru/modern-js-cheatsheet)
+- [JS Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+##### React
+- [React Cheat Sheet](https://github.com/vincsb/react-cheat-sheet)
+- [React Documentation](https://reactjs.org/docs/hello-world.html)
+- [React Tutorial](https://reactjs.org/tutorial/tutorial.html#what-are-we-building)
