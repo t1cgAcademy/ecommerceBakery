@@ -26,7 +26,7 @@ Happy Coding :tada: :rocket: :metal:
 *Note*: If you run into errors, __Google__ is every developers best friend to help troubleshoot! Also your human best developer friends are great troubleshooting resources :hand:
 
 Mac | Windows | Purpose
------------- | -------------
+------------ | ------------- | ------------- 
 1. Install [Homebrew](https://brew.sh/) :beers: | 1. Install [Chocolatey](https://chocolatey.org/) :cake: | Package Manager for Installing Almost Everything!
 2. [Install Node with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew ) | 2. [Install Node with Chocolatey](https://chocolatey.org/packages/nodejs.install) | Installing Node will allow our machines to run javascript code as well install the O' So Important NPM (Node Package Manager)!
 3. Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.visualstudio.com/))| Allow us to manipulate and edit our source code as well as provide extra tools to support and ease programming work flows.
