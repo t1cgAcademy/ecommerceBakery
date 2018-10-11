@@ -33,7 +33,7 @@ Install an IDE ([atom](https://atom.io/) or [visual studio code](https://code.vi
 Install create-react-app `npm i create-react-app -g` | Install create-react-app `npm i create-react-app -g` | Allow you to run create-react-app software.
 [Install MongoDB with Homebrew](https://dbamohsin.wordpress.com/2017/05/02/installing-mongodb-on-a-mac-with-homebrew/) | [Install MongoDB with Chocolatey](https://kjng.github.io/2017/05/17/mongodb-windows.html) <-- This guide is great to get you started but forgets an important step, the command to actually install mongo.  It's `choco install mongodb`| The database software we will be using for this application.
 Intall Git with Homebrew `brew install git` | [Intall Git with Chocolatey](https://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows/#using-chocolatey) | Git is our version control tool allowing us store our source code online and locally while also adding tooling for collaboration and historical versioning.
-Clone this repository | Clone this repository | Now you have a version of the project source code on your local machine :smile:
+Clone this repository and the Api repository | `git clone [repourl].git` | Now you have a version of the project source code on your local machine :smile:
 
 ---
 ## Git Guide

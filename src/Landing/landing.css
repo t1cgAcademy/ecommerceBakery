@@ -1,0 +1,27 @@
+#landing .jumbotron {
+  padding-left: 7em;
+  padding-right: 7em;
+  background-image: url('../assets/img/jumbo.jpg');
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+}
+
+.jumbotron h1, .jumbotron p {
+  text-shadow: 5px 3px 5px #d66e5a;
+}
+
+.jumbotron p:first-of-type {
+  margin-bottom: 0;
+}
+
+.jumbotron button {
+  background: #d66e5a;
+  border: 1px solid #d66e5a;
+  text-shadow: none;
+}
+
+.jumbotron button:hover {
+  background: #5ad6a8;
+  border: 1px solid #5ad6a8;
+}

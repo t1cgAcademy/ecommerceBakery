@@ -1,0 +1,41 @@
+#bakeryNav {
+  display: block;
+  height: 90px;
+  width: 100%;
+  border-bottom: 2px solid #d66e5a;
+  background: white;
+}
+
+#bakeryNav .navbar-toggle {
+  margin-top: 28px;
+}
+
+#bakeryNav .navbar-collapse {
+  border-top: none;
+  background: white;
+}
+
+#bakeryNav .logo a:hover {
+  background: inherit;
+}
+
+#bakeryNav .logo img {
+  height: 60px;
+}
+
+#bakeryNav .logo p {
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 18px;
+  color: #d66e5a;
+}
+
+#bakeryNav .links {
+  margin-top: 18px;
+  font-size: 16px;
+}
+
+#bakeryNav .links a {
+  color: #d66e5a;
+  background: inherit;
+}

@@ -1,0 +1,86 @@
+import React, { Component } from 'react';
+import {Grid, Row, Col} from 'react-bootstrap';
+import './shop.css';
+
+class Shop extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: null
+    }
+  }
+
+
+  componentDidMount() {
+    this.handleGetProducts();
+  }
+
+  /**
+   * handleGetProducts - make a request to the api for products
+   *
+   * This fn makes a http request to the api asking it
+   * to get the product data from mongodb and returning
+   * here.
+   *
+   * Once the data is returned we set the components state
+   * with the returned data
+   *
+   */
+  handleGetProducts = () => {
+    let request = {};
+    request.method = 'get';
+    request.headers = {'Content-Type': 'application/json'};
+    fetch('http://localhost:3001/api/products', request)
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({
+          products: data.data
+        });
+      })
+      .catch((error) => {
+        console.log("FETCH ERR:  ", error);
+      })
+  }
+
+  /**
+   * render - The html to be renderd to the DOM
+   *
+   * Theres a little extra logic in this render that
+   * returns different html based on if the api returned
+   * product data or not. We do this because if there is
+   * no product data we cant create html that relys
+   * on the data.  The website will crash with errors
+   * if there is no data, unless we manage both instances
+   * (data and no data).   
+   */
+  render() {
+    if (!this.state.products) {
+      return (
+        <div>
+          <h1 style={{textAlign: "center"}}>No Products To Show :(</h1>
+        </div>
+      )
+    } else {
+      return (
+        <div id="shop">
+          <h1>Shop Till You Drop</h1>
+          <Grid>
+            {this.state.products.map((product) => {
+              return (
+                <Col className="product" lg={4} md={6} sm={12}>
+                  <img src={product.image}/>
+                  <h4>{product.name}</h4>
+                  <p>{product.description}</p>
+                  <p>${(product.cost / 100).toFixed(2)}</p>
+                </Col>
+              )
+            })}
+          </Grid>
+        </div>
+      )
+    }
+  }
+
+}
+
+export default Shop;
