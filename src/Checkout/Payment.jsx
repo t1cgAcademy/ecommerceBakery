@@ -6,7 +6,7 @@ const Payment = (props) => {
   return (
     <div>
       <div id="paymentContainer">
-        <StripeProvider apiKey={'pk_test_WhluGB40x4VajcJ93K9PFqdg'}>
+        <StripeProvider apiKey={'your_api_key_here'}>
           <Elements>
             <StripeForm
               amount={100}

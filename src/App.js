@@ -80,17 +80,6 @@ class App extends Component {
         payError: 'There was an error with your payment. Your card was not charged.'
       })
     }
-      // .then((response) => response.json())
-      // .then(resp => {
-      //   if (resp.message === "Successful Charge") {
-      //     return 'success';
-      //   } else {
-      //     return 'fail pay';
-      //   }
-      // })
-      // .catch(err => {
-      //   return 'system error';
-      // });
   }
 
   render() {
