@@ -6,7 +6,9 @@
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.0",
-    "react-scripts": "1.1.5"
+    "react-scripts": "^2.1.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

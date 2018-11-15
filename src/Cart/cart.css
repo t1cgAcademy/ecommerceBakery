@@ -1,0 +1,44 @@
+#cart h2 {
+  color: #d66e5a;
+  margin-top: 4.5em;
+  text-align: center;
+}
+
+#cart h3 {
+  color: #d66e5a;
+  text-align: center;
+}
+
+#cart table {
+  margin: auto;
+  margin-top: 5em;
+  max-width: 875px;
+}
+
+#cart th {
+  color: #d66e5a;
+  font-size: 24px;
+}
+
+#cart td p {
+  padding-left: 15px;
+}
+
+#cart img {
+  height: 125px;
+}
+
+#cart .total {
+  margin-top: 2em;
+  font-size: 32px;
+  color: #d66e5a;
+}
+
+#cart .total p {
+  display: inline-block;
+  width: 50%;
+}
+
+#cart .total p:first-of-type {
+  text-align: right;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Grid, Row, Col, Button} from 'react-bootstrap';
 import './shop.css';
 
 class Shop extends Component {
@@ -7,7 +7,7 @@ class Shop extends Component {
     super(props);
     this.state = {
       products: null
-    }
+    };
   }
 
 
@@ -42,6 +42,16 @@ class Shop extends Component {
       })
   }
 
+  // updateQuantity = (e) => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     ...this.state,
+  //     currentQuantity: e.target.value
+  //   })
+  // }
+  // <input onChange={this.updateQuantity} type="number" max="10" min="0" defaultValue="0" value={this.value}/>
+  // currentQuantity: 1
+
   /**
    * render - The html to be renderd to the DOM
    *
@@ -51,7 +61,7 @@ class Shop extends Component {
    * no product data we cant create html that relys
    * on the data.  The website will crash with errors
    * if there is no data, unless we manage both instances
-   * (data and no data).   
+   * (data and no data).
    */
   render() {
     if (!this.state.products) {
@@ -65,13 +75,23 @@ class Shop extends Component {
         <div id="shop">
           <h1>Shop Till You Drop</h1>
           <Grid>
-            {this.state.products.map((product) => {
+            {this.state.products.map((product, i) => {
               return (
-                <Col className="product" lg={4} md={6} sm={12}>
+                <Col className="product" lg={4} md={6} sm={12} key={i}>
                   <img src={product.image}/>
                   <h4>{product.name}</h4>
                   <p>{product.description}</p>
                   <p>${(product.cost / 100).toFixed(2)}</p>
+                  <Button
+                    value={JSON.stringify({
+                      img: product.image,
+                      product: product.name,
+                      cost: product.cost
+                    })}
+                    onClick={this.props.addToCart}
+                  >
+                    Add To Cart
+                  </Button>
                 </Col>
               )
             })}
