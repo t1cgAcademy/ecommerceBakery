@@ -42,7 +42,7 @@ const Cart = (props) => {
             <p>Total:</p>
             <p>&nbsp;${(props.cart.reduce(reducer) / 100).toFixed(2)}</p>
           </div>
-          <Button onClick={() => {props.handleSelect('checkout')}}>Checkout</Button>
+          <Button className="cta" onClick={() => {props.handleSelect('checkout')}}>Checkout</Button>
         </div>
       }
     </div>

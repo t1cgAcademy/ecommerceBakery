@@ -83,6 +83,7 @@ class Shop extends Component {
                   <p>{product.description}</p>
                   <p>${(product.cost / 100).toFixed(2)}</p>
                   <Button
+                    className="atc"
                     value={JSON.stringify({
                       img: product.image,
                       product: product.name,

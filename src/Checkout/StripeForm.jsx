@@ -10,16 +10,15 @@ const StripeForm = (props) => {
   return (
     <div id="stripeForm">
       <div>
+          <h1>Checkout</h1>
           <form method="POST" onSubmit={(ev) => props.pay(ev, props.stripe)}>
-            <h4>Checkout</h4>
             <label>Credit Card Number</label>
-            <CardNumberElement className="stripeElements cardNumber" />
+            <CardNumberElement className="stripeElements cardNumber"/>
             <label>Expiration</label>
-            <CardExpiryElement className="stripeElements cardExpire" />
+            <CardExpiryElement className="stripeElements cardExpire"/>
             <label>CVC / CVV</label>
-            <CardCVCElement className="stripeElements cardCvc"  />
+            <CardCVCElement className="stripeElements cardCvc"/>
             <button id="payButton">Pay Now</button>
-            <span style={{display:'block', width: '100%', height: '20px'}}> </span>
           </form>
         </div>
       </div>
