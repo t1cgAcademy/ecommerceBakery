@@ -12,6 +12,7 @@
 #shop .product {
   text-align: center;
   margin-bottom: 10px;
+  min-height: 275px;
 }
 
 #shop .atc {
