@@ -5,6 +5,8 @@ import Contact from './Contact/Contact.jsx';
 import Shop from './Shop/Shop.jsx';
 import Cart from './Cart/Cart.jsx';
 import Checkout from './Checkout/Payment.jsx';
+import Errors from './Errors/Errors.jsx';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   /**
@@ -18,9 +20,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      payMessage: '',
       view: 'home',
-      cart: []
-    }
+      loading: null
+    };
   }
 
   /**
@@ -33,81 +36,135 @@ class App extends Component {
    * When we click a nav option, the event key is passed
    *
    */
-  handleSelect = (key) => {
+  handleSelect = key => {
     this.setState({
       view: key
-    })
+    });
+  };
+
+  componentDidMount() {
+    if (localStorage.getItem('cart') === null) this.setState({ cartLength: 0 });
+    else {
+      this.setState({
+        cartLength: JSON.parse(localStorage.getItem('cart')).length
+      });
+    }
   }
 
-  addToCart = async (e) => {
+  addToCart = e => {
     e.preventDefault();
+    let cart = [];
+    if (localStorage.getItem('cart'))
+      cart = JSON.parse(localStorage.getItem('cart'));
+    else cart = [];
+    cart.push(JSON.parse(e.target.value));
     this.setState({
       ...this.state,
-      cart: [...this.state.cart, JSON.parse(e.target.value)]
-    })
-  }
+      cartLength: this.state.cartLength + 1
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
 
   pay = async (e, stripe) => {
+    this.setState({ loading: true });
     e.preventDefault();
     if (!stripe) {
       this.setState({
         ...this.state,
-        payError: 'There was an error with your payment. Your card was not charged.'
-      })
+        payMessage:
+          'There was an error with your payment. Your card was not charged.'
+      });
     }
     const payload = await stripe.createToken();
     if (!payload.token) {
       this.setState({
         ...this.state,
-        payError: 'There was an error with your payment. Your card was not charged.'
-      })
+        payMessage:
+          'There was an error with your payment. Your card was not charged.'
+      });
     }
     const charge = JSON.stringify({
       token: payload.token,
-      amount: 1000
+      amount: parseInt(this.getTotalCost()) * 100
     });
     const url = 'http://localhost:3001/api/payment';
-    const headers = {'Content-Type': 'application/json'};
-    const makePay = await fetch(url, {method: 'post', headers, body: charge});
-    if (makePay.message === 'Successful Charge') {
+    const headers = { 'Content-Type': 'application/json' };
+    const makePay = await fetch(url, { method: 'post', headers, body: charge });
+    console.log('makePay', makePay);
+    if (makePay.status >= 200 && makePay.status < 300) {
       this.setState({
         ...this.state,
-        paySuccess: 'YUM YUM! Goodies On the Way!'
-      })
+        cartLength: 0,
+        payMessage: 'YUM YUM! Goodies On the Way!',
+        loading: false
+      });
+      localStorage.removeItem('cart');
     } else {
       this.setState({
         ...this.state,
-        payError: 'There was an error with your payment. Your card was not charged.'
-      })
+        payMessage:
+          'There was an error with your payment. Your card was not charged.'
+      });
     }
-  }
+  };
+
+  getTotalCost = () => {
+    let totalCost = 0;
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+    if (cartItems === null) return 0;
+    cartItems.map(item => (totalCost += item.cost));
+    return (totalCost / 100).toFixed(2);
+  };
 
   render() {
     return (
-      <div className="App">
-        <BakeryNav
-          selectProp={this.handleSelect}
-          view={this.state.view}
-          cartLength={this.state.cart.length}
-        />
-        <div style={{marginTop: "90px"}}>
-          {this.state.view === 'home' &&
-            <Landing />
-          }
-          {this.state.view === 'shop' &&
-            <Shop addToCart={this.addToCart}/>
-          }
-          {this.state.view === 'contact' &&
-            <Contact/>
-          }
-          {this.state.view === 'cart' &&
-            <Cart cart={this.state.cart} handleSelect={this.handleSelect}/>
-          }
-          {this.state.view === 'checkout' &&
-            <Checkout pay={this.pay}/>
-          }
+      <BrowserRouter>
+        <div className="App">
+          <BakeryNav
+            selectProp={this.handleSelect}
+            view={this.state.view}
+            cartLength={this.state.cartLength}
+          />
+          <div style={{ marginTop: '90px' }}>
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/contact" component={Contact} />
+              <Route
+                exact
+                path="/cart"
+                render={props => (
+                  <Cart
+                    {...props}
+                    cart={JSON.parse(localStorage.getItem('cart'))}
+                    handleSelect={this.handleSelect}
+                    totalCost={this.getTotalCost()}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/shop"
+                render={props => <Shop {...props} addToCart={this.addToCart} />}
+              />
+              <Route
+                exact
+                path="/checkout"
+                render={props => (
+                  <Checkout
+                    {...props}
+                    pay={this.pay}
+                    amount={this.getTotalCost()}
+                    totalCost={this.getTotalCost()}
+                    payMessage={this.state.payMessage}
+                    loading={this.state.loading}
+                  />
+                )}
+              />
+              <Route component={Errors} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
