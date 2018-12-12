@@ -1,0 +1,20 @@
+# Bonus 🤑
+
+- Add loading message
+- Add response message
+- Reset cart
+
+# State
+- If makePay.status >= 200 && makePay.status < 300 then success
+- setState of loading to false, cartLength 0, payMessage to 'success'
+
+# Props
+- Add props in Payment
+- Add conditional render
+      {
+        props.loading ? (
+          <h1>Loading Response...</h1>
+        ) : <div>
+          <h1>{props.payMessage}</h1>
+        </div>
+      }

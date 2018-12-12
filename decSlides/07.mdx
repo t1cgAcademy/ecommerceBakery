@@ -1,0 +1,32 @@
+#Local Storage Implementation Continued...
+
+- Need to parse our cartItems
+- Two functions: one for getting total cost and another for getting the items
+
+# Props
+- Create some props called totalCost
+- Change cart={this.getCartItems()}
+
+  getTotalCost = () => {
+    let totalCost = 0;
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+    if (cartItems === null) return 0;
+    cartItems.map(item => (totalCost += item.cost));
+    return (totalCost / 100).toFixed(2);
+  };
+
+  getCartItems = () => {
+    if (localStorage.getItem('cart'))
+      return JSON.parse(localStorage.getItem('cart'));
+    else return [];
+  };
+
+# Fix our pay function
+- Change our Payment props.amount
+- Change our charge amount 
+      const charge = JSON.stringify({
+      token: payload.token,
+      amount: parseInt(this.getTotalCost()) * 100
+    });
+- Don't forget to add Stripe keys to test payment
+- localStorage.removeItem('cart');

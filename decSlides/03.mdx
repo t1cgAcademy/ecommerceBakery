@@ -1,0 +1,19 @@
+# React Router v4 continued 🕐
+
+- Docs: https://reacttraining.com/react-router/web/api
+- Top level import
+  import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+- Wrap our entire App.js in the <BrowserRouter>
+- Lets look at what BrowserRouter now gives us access to in props of Landing
+
+# Routes 🏃‍🏃‍
+
+- Create our Routes by looking at previous views
+- <Route exact path="/path" component={ComponentWeWant} />
+- <Route render={props => (<Checkout {...props} pay={this.pay} )}/>
+
+# Link 🗡
+
+- Instead of using <a> tags we'll use Link from React Router
+- Replace the 5 Nav links and the 1 button link in cart
