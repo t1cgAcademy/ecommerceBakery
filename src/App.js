@@ -116,6 +116,12 @@ class App extends Component {
     return (totalCost / 100).toFixed(2);
   };
 
+  getCartItems = () => {
+    if (localStorage.getItem('cart'))
+      return JSON.parse(localStorage.getItem('cart'));
+    else return [];
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -135,7 +141,7 @@ class App extends Component {
                 render={props => (
                   <Cart
                     {...props}
-                    cart={JSON.parse(localStorage.getItem('cart'))}
+                    cart={this.getCartItems()}
                     handleSelect={this.handleSelect}
                     totalCost={this.getTotalCost()}
                   />
