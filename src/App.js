@@ -5,8 +5,8 @@ import Contact from './Contact/Contact.jsx';
 import Shop from './Shop/Shop.jsx';
 import Cart from './Cart/Cart.jsx';
 import Checkout from './Checkout/Payment.jsx';
-import Errors from './Errors/Errors.jsx';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Errors from './Errors/Errors';
 
 class App extends Component {
   /**
@@ -20,7 +20,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      payMessage: '',
       view: 'home',
       loading: null
     };
@@ -51,7 +50,9 @@ class App extends Component {
     }
   }
 
-  addToCart = e => {
+
+
+  addToCart = async e => {
     e.preventDefault();
     let cart = [];
     if (localStorage.getItem('cart'))
@@ -63,49 +64,6 @@ class App extends Component {
       cartLength: this.state.cartLength + 1
     });
     localStorage.setItem('cart', JSON.stringify(cart));
-  };
-
-  pay = async (e, stripe) => {
-    this.setState({ loading: true });
-    e.preventDefault();
-    if (!stripe) {
-      this.setState({
-        ...this.state,
-        payMessage:
-          'There was an error with your payment. Your card was not charged.'
-      });
-    }
-    const payload = await stripe.createToken();
-    if (!payload.token) {
-      this.setState({
-        ...this.state,
-        payMessage:
-          'There was an error with your payment. Your card was not charged.'
-      });
-    }
-    const charge = JSON.stringify({
-      token: payload.token,
-      amount: parseInt(this.getTotalCost()) * 100
-    });
-    const url = 'http://localhost:3001/api/payment';
-    const headers = { 'Content-Type': 'application/json' };
-    const makePay = await fetch(url, { method: 'post', headers, body: charge });
-    console.log('makePay', makePay);
-    if (makePay.status >= 200 && makePay.status < 300) {
-      this.setState({
-        ...this.state,
-        cartLength: 0,
-        payMessage: 'YUM YUM! Goodies On the Way!',
-        loading: false
-      });
-      localStorage.removeItem('cart');
-    } else {
-      this.setState({
-        ...this.state,
-        payMessage:
-          'There was an error with your payment. Your card was not charged.'
-      });
-    }
   };
 
   getTotalCost = () => {
@@ -120,6 +78,50 @@ class App extends Component {
     if (localStorage.getItem('cart'))
       return JSON.parse(localStorage.getItem('cart'));
     else return [];
+  };
+
+  pay = async (e, stripe) => {
+    e.preventDefault();
+    this.setState({ loading: true });
+    if (!stripe) {
+      this.setState({
+        ...this.state,
+        payError:
+          'There was an error with your payment. Your card was not charged.'
+      });
+    }
+    const payload = await stripe.createToken();
+    if (!payload.token) {
+      this.setState({
+        ...this.state,
+        payError:
+          'There was an error with your payment. Your card was not charged.'
+      });
+    }
+    const charge = JSON.stringify({
+      token: payload.token,
+      amount: parseInt(this.getTotalCost()) * 100
+    });
+    const url = 'http://localhost:3001/api/payment';
+    const headers = { 'Content-Type': 'application/json' };
+    const makePay = await fetch(url, { method: 'post', headers, body: charge });
+    if (makePay.status >= 200 && makePay.status < 300) {
+      this.setState({
+        ...this.state,
+        cartLength: 0,
+        loading: false,
+        payMessage: 'YUM YUM! Goodies On the Way!'
+      });
+      localStorage.removeItem('cart');
+    } else {
+      this.setState({
+        ...this.state,
+        loading: false,
+        payMessage:
+          'There was an error with your payment. Your card was not charged.'
+      });
+      localStorage.removeItem('cart');
+    }
   };
 
   render() {
@@ -137,21 +139,22 @@ class App extends Component {
               <Route exact path="/contact" component={Contact} />
               <Route
                 exact
+                path="/shop"
+                render={props => <Shop {...props} addToCart={this.addToCart} />}
+              />
+              <Route
+                exact
                 path="/cart"
                 render={props => (
                   <Cart
                     {...props}
                     cart={this.getCartItems()}
-                    handleSelect={this.handleSelect}
                     totalCost={this.getTotalCost()}
+                    handleSelect={this.handleSelect}
                   />
                 )}
               />
-              <Route
-                exact
-                path="/shop"
-                render={props => <Shop {...props} addToCart={this.addToCart} />}
-              />
+
               <Route
                 exact
                 path="/checkout"
@@ -159,13 +162,13 @@ class App extends Component {
                   <Checkout
                     {...props}
                     pay={this.pay}
-                    amount={this.getTotalCost()}
-                    totalCost={this.getTotalCost()}
-                    payMessage={this.state.payMessage}
                     loading={this.state.loading}
+                    payMessage={this.state.payMessage}
+                    amount={this.getTotalCost()}
                   />
                 )}
               />
+
               <Route component={Errors} />
             </Switch>
           </div>
