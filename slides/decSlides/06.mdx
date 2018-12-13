@@ -1,0 +1,28 @@
+# Local Storage Implementation
+
+- Problem with state is it refreshes on reload and so our cart doesn't save
+- Put items into localStorage and just track the cartLength with state
+- Let's modify our addToCart function
+
+  componentDidMount() {
+    if (localStorage.getItem('cart') === null) this.setState({ cartLength: 0 });
+    else {
+      this.setState({
+        cartLength: JSON.parse(localStorage.getItem('cart')).length
+      });
+    }
+  }
+
+  addToCart = async e => {
+    e.preventDefault();
+    let cart = [];
+    if (localStorage.getItem('cart'))
+      cart = JSON.parse(localStorage.getItem('cart'));
+    else cart = [];
+    cart.push(JSON.parse(e.target.value));
+    this.setState({
+      ...this.state,
+      cartLength: this.state.cartLength + 1
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };

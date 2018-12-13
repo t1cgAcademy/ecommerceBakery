@@ -1,6 +1,7 @@
 import React from 'react';
 import { StripeProvider, Elements } from 'react-stripe-elements';
 import StripeForm from './StripeForm.jsx';
+import './checkout.css';
 
 const Payment = props => {
   return (

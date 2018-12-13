@@ -29,7 +29,7 @@
 }
 
 #cart .total {
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: 32px;
   color: #d66e5a;
 }
@@ -41,4 +41,18 @@
 
 #cart .total p:first-of-type {
   text-align: right;
+}
+
+#cart .cta {
+  background: #d66e5a;
+  border: 1px solid #d66e5a;
+  color: white;
+  display: block;
+  margin: 10px auto;
+}
+
+#cart .cta:hover {
+  background: white;
+  border: 1px solid #d66e5a;
+  color: #d66e5a;
 }

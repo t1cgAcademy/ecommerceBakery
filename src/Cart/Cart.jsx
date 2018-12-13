@@ -57,7 +57,7 @@ const Cart = props => {
             <p>&nbsp;$ {props.totalCost}</p>
           </div>
           <Link to="/checkout">
-            <Button>Checkout</Button>
+          <Button className="cta" onClick={() => {props.handleSelect('checkout')}}>Checkout</Button>
           </Link>
         </div>
       )}
