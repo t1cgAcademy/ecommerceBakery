@@ -22,7 +22,6 @@ const StripeForm = props => {
           </form>
         </div>
       </div>
-    </div>
   );
 };
 
