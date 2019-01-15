@@ -6,9 +6,12 @@
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.0",
+    "react-redux": "^6.0.0",
     "react-scripts": "^2.1.1",
     "react-stripe-checkout": "^2.6.3",
-    "react-stripe-elements": "^2.0.1"
+    "react-stripe-elements": "^2.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

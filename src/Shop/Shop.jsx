@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-import {Grid, Row, Col, Button} from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import './shop.css';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as shopActions from '../actions/shopActions';
 
 class Shop extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: null
+      products: null,
     };
   }
 
-
   componentDidMount() {
-    this.handleGetProducts();
+    // this.handleGetProducts();
+    this.props.shopActions.fetchStuff();
+    console.log('do I get props here?!?!', this.props);
   }
 
   /**
@@ -26,21 +31,21 @@ class Shop extends Component {
    * with the returned data
    *
    */
-  handleGetProducts = () => {
-    let request = {};
-    request.method = 'get';
-    request.headers = {'Content-Type': 'application/json'};
-    fetch('http://localhost:3001/api/products', request)
-      .then(response => response.json())
-      .then((data) => {
-        this.setState({
-          products: data.data
-        });
-      })
-      .catch((error) => {
-        console.log("FETCH ERR:  ", error);
-      })
-  }
+  // handleGetProducts = () => {
+  //   let request = {};
+  //   request.method = 'get';
+  //   request.headers = { 'Content-Type': 'application/json' };
+  //   fetch('http://localhost:3001/api/products', request)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       this.setState({
+  //         products: data.data,
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log('FETCH ERR:  ', error);
+  //     });
+  // };
 
   // updateQuantity = (e) => {
   //   e.preventDefault();
@@ -64,21 +69,22 @@ class Shop extends Component {
    * (data and no data).
    */
   render() {
-    if (!this.state.products) {
+    console.log('what do my props look like =======>>>>>>>', this.props.stuffs);
+    if (1 === 2) {
       return (
         <div>
-          <h1 style={{textAlign: "center"}}>No Products To Show :(</h1>
+          <h1 style={{ textAlign: 'center' }}>No Products To Show :(</h1>
         </div>
-      )
+      );
     } else {
       return (
         <div id="shop">
           <h1>Shop Till You Drop</h1>
           <Grid>
-            {this.state.products.map((product, i) => {
+            {this.props.stuffs.map((product, i) => {
               return (
                 <Col className="product" lg={4} md={6} sm={12} key={i}>
-                  <img src={product.image}/>
+                  <img src={product.image} />
                   <h4>{product.name}</h4>
                   <p>{product.description}</p>
                   <p>${(product.cost / 100).toFixed(2)}</p>
@@ -87,21 +93,36 @@ class Shop extends Component {
                     value={JSON.stringify({
                       img: product.image,
                       product: product.name,
-                      cost: product.cost
+                      cost: product.cost,
                     })}
-                    onClick={this.props.addToCart}
-                  >
+                    onClick={this.props.addToCart}>
                     Add To Cart
                   </Button>
                 </Col>
-              )
+              );
             })}
           </Grid>
         </div>
-      )
+      );
     }
   }
-
 }
 
-export default Shop;
+// export default Shop;
+function mapStateToProps(state) {
+  console.log('state in mapStateToProps', state);
+  return {
+    stuffs: state.shop,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    shopActions: bindActionCreators(shopActions, dispatch),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Shop);
