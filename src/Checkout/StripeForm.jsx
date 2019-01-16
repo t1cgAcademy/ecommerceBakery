@@ -6,7 +6,7 @@ import {
   injectStripe
 } from 'react-stripe-elements';
 
-const StripeForm = (props) => {
+const StripeForm = props => {
   return (
     <div id="stripeForm">
       <div>
@@ -22,7 +22,7 @@ const StripeForm = (props) => {
           </form>
         </div>
       </div>
-    );
+  );
 };
 
 export default injectStripe(StripeForm);
