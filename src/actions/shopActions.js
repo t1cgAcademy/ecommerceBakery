@@ -11,7 +11,7 @@ export const fetchStuff = () => {
           data: data,
         }))
       )
-      .then(json => dispatch({ type: types.RECEIVE_STUFF, stuff: json.data.data }))
+      .then(json => dispatch({ type: types.RECEIVE_STUFF, products: json.data.data }))
       .catch(error => {
         console.log('FETCH ERR:  ', error);
       });

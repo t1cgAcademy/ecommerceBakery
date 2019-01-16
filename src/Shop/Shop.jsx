@@ -31,7 +31,7 @@ class Shop extends Component {
         <div id="shop">
           <h1>Shop Till You Drop</h1>
           <Grid>
-            {this.props.stuffs.map((product, i) => {
+            {this.props.products.map((product, i) => {
               return (
                 <Col className="product" lg={4} md={6} sm={12} key={i}>
                   <img src={product.image} />
@@ -54,7 +54,7 @@ class Shop extends Component {
 // export default Shop;
 function mapStateToProps(state) {
   return {
-    stuffs: state.shop,
+    products: state.shop,
     cart: state.cart,
   };
 }
