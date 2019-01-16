@@ -8,6 +8,9 @@ import Checkout from './Checkout/Payment.jsx';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Errors from './Errors/Errors';
 
+import { connect } from 'react-redux';
+import * as shopActions from './actions/shopActions';
+
 class App extends Component {
   /**
    * constructor - build class App
@@ -21,7 +24,7 @@ class App extends Component {
     super(props);
     this.state = {
       view: 'home',
-      loading: null
+      loading: null,
     };
   }
 
@@ -30,14 +33,14 @@ class App extends Component {
    *
    * This function sets the state for what view to render.
    * Default is set to "home", thus why homepage is what we
-   * first when going to http://localhost:300.
+   * first when going to http://localhost:3000.
    *
    * When we click a nav option, the event key is passed
    *
    */
   handleSelect = key => {
     this.setState({
-      view: key
+      view: key,
     });
   };
 
@@ -45,23 +48,20 @@ class App extends Component {
     if (localStorage.getItem('cart') === null) this.setState({ cartLength: 0 });
     else {
       this.setState({
-        cartLength: JSON.parse(localStorage.getItem('cart')).length
+        cartLength: JSON.parse(localStorage.getItem('cart')).length,
       });
     }
   }
 
-
-
   addToCart = async e => {
     e.preventDefault();
     let cart = [];
-    if (localStorage.getItem('cart'))
-      cart = JSON.parse(localStorage.getItem('cart'));
+    if (localStorage.getItem('cart')) cart = JSON.parse(localStorage.getItem('cart'));
     else cart = [];
     cart.push(JSON.parse(e.target.value));
     this.setState({
       ...this.state,
-      cartLength: this.state.cartLength + 1
+      cartLength: this.state.cartLength + 1,
     });
     localStorage.setItem('cart', JSON.stringify(cart));
   };
@@ -75,8 +75,7 @@ class App extends Component {
   };
 
   getCartItems = () => {
-    if (localStorage.getItem('cart'))
-      return JSON.parse(localStorage.getItem('cart'));
+    if (localStorage.getItem('cart')) return JSON.parse(localStorage.getItem('cart'));
     else return [];
   };
 
@@ -86,21 +85,19 @@ class App extends Component {
     if (!stripe) {
       this.setState({
         ...this.state,
-        payError:
-          'There was an error with your payment. Your card was not charged.'
+        payError: 'There was an error with your payment. Your card was not charged.',
       });
     }
     const payload = await stripe.createToken();
     if (!payload.token) {
       this.setState({
         ...this.state,
-        payError:
-          'There was an error with your payment. Your card was not charged.'
+        payError: 'There was an error with your payment. Your card was not charged.',
       });
     }
     const charge = JSON.stringify({
       token: payload.token,
-      amount: parseInt(this.getTotalCost()) * 100
+      amount: parseInt(this.getTotalCost()) * 100,
     });
     const url = 'http://localhost:3001/api/payment';
     const headers = { 'Content-Type': 'application/json' };
@@ -110,21 +107,21 @@ class App extends Component {
         ...this.state,
         cartLength: 0,
         loading: false,
-        payMessage: 'YUM YUM! Goodies On the Way!'
+        payMessage: 'YUM YUM! Goodies On the Way!',
       });
       localStorage.removeItem('cart');
     } else {
       this.setState({
         ...this.state,
         loading: false,
-        payMessage:
-          'There was an error with your payment. Your card was not charged.'
+        payMessage: 'There was an error with your payment. Your card was not charged.',
       });
       localStorage.removeItem('cart');
     }
   };
 
   render() {
+    console.log('what do my propsPROPS!!! look like in app component', this.props);
     return (
       <BrowserRouter>
         <div className="App">
@@ -137,11 +134,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/contact" component={Contact} />
-              <Route
-                exact
-                path="/shop"
-                render={props => <Shop {...props} addToCart={this.addToCart} />}
-              />
+              <Route exact path="/shop" render={props => <Shop {...props} addToCart={this.addToCart} />} />
               <Route
                 exact
                 path="/cart"
@@ -179,3 +172,19 @@ class App extends Component {
 }
 
 export default App;
+// function mapStateToProps(state) {
+//   return {
+//     view: state.view,
+//   };
+// }
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     changeView: key => dispatch(navActions.changeView(key)),
+//   };
+// };
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(App);

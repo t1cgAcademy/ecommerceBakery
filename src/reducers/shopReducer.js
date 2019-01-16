@@ -1,9 +1,9 @@
-import initialState from './initialState';
+import initialShopState from './initialShopState';
 import { FETCH_STUFF, RECEIVE_STUFF } from '../actions/actionTypes';
 
-export default function shop(state = initialState.stuff, action) {
+export default function shop(state = initialShopState.stuff, action) {
   let newState;
-  console.log('show me the action please', action.stuff);
+  console.log('show me the SHOP SHOP action please', action.stuff);
   switch (action.type) {
     case FETCH_STUFF:
       console.log('FETCH_STUFF Action');

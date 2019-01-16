@@ -3,7 +3,7 @@ import { Grid, Row, Col, Button } from 'react-bootstrap';
 import './shop.css';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import * as shopActions from '../actions/shopActions';
 
 class Shop extends Component {
@@ -15,9 +15,7 @@ class Shop extends Component {
   }
 
   componentDidMount() {
-    // this.handleGetProducts();
-    this.props.shopActions.fetchStuff();
-    console.log('do I get props here?!?!', this.props);
+    this.props.shopActions();
   }
 
   /**
@@ -69,7 +67,6 @@ class Shop extends Component {
    * (data and no data).
    */
   render() {
-    console.log('what do my props look like =======>>>>>>>', this.props.stuffs);
     if (1 === 2) {
       return (
         <div>
@@ -118,7 +115,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    shopActions: bindActionCreators(shopActions, dispatch),
+    shopActions: () => dispatch(shopActions.fetchStuff()),
   };
 }
 

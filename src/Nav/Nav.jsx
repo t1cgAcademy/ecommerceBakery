@@ -7,12 +7,7 @@ import { Link } from 'react-router-dom';
 
 const BakeryNav = props => {
   return (
-    <Navbar
-      fixedTop
-      collapseOnSelect={true}
-      onSelect={props.selectProp}
-      id="bakeryNav"
-    >
+    <Navbar fixedTop collapseOnSelect={true} onSelect={props.selectProp} id="bakeryNav">
       <Navbar.Header>
         <Navbar.Brand>
           <Link className={'logo'} to="/">
