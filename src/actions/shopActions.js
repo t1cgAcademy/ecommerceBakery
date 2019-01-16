@@ -1,11 +1,6 @@
 import * as types from './actionTypes';
 
-export function receiveStuff(json) {
-  console.log('show me the json variable pllllease', json.data.data);
-  return { type: types.RECEIVE_STUFF, stuff: json.data.data };
-}
-
-export function fetchStuff() {
+export const fetchStuff = () => {
   return dispatch => {
     let request = {};
     request.method = 'get';
@@ -16,9 +11,9 @@ export function fetchStuff() {
           data: data,
         }))
       )
-      .then(json => dispatch(receiveStuff(json)))
+      .then(json => dispatch({ type: types.RECEIVE_STUFF, stuff: json.data.data }))
       .catch(error => {
         console.log('FETCH ERR:  ', error);
       });
   };
-}
+};

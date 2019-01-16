@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Errors from './Errors/Errors';
 
 import { connect } from 'react-redux';
-import * as shopActions from './actions/shopActions';
+// import * as shopActions from './actions/shopActions';
 
 class App extends Component {
   /**
@@ -44,39 +44,12 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
-    if (localStorage.getItem('cart') === null) this.setState({ cartLength: 0 });
-    else {
-      this.setState({
-        cartLength: JSON.parse(localStorage.getItem('cart')).length,
-      });
-    }
-  }
-
-  addToCart = async e => {
-    e.preventDefault();
-    let cart = [];
-    if (localStorage.getItem('cart')) cart = JSON.parse(localStorage.getItem('cart'));
-    else cart = [];
-    cart.push(JSON.parse(e.target.value));
-    this.setState({
-      ...this.state,
-      cartLength: this.state.cartLength + 1,
-    });
-    localStorage.setItem('cart', JSON.stringify(cart));
-  };
-
   getTotalCost = () => {
     let totalCost = 0;
     const cartItems = JSON.parse(localStorage.getItem('cart'));
     if (cartItems === null) return 0;
     cartItems.map(item => (totalCost += item.cost));
     return (totalCost / 100).toFixed(2);
-  };
-
-  getCartItems = () => {
-    if (localStorage.getItem('cart')) return JSON.parse(localStorage.getItem('cart'));
-    else return [];
   };
 
   pay = async (e, stripe) => {
@@ -121,7 +94,6 @@ class App extends Component {
   };
 
   render() {
-    console.log('what do my propsPROPS!!! look like in app component', this.props);
     return (
       <BrowserRouter>
         <div className="App">
@@ -141,7 +113,7 @@ class App extends Component {
                 render={props => (
                   <Cart
                     {...props}
-                    cart={this.getCartItems()}
+                    cart={this.props.cart}
                     totalCost={this.getTotalCost()}
                     handleSelect={this.handleSelect}
                   />
@@ -171,20 +143,11 @@ class App extends Component {
   }
 }
 
-export default App;
-// function mapStateToProps(state) {
-//   return {
-//     view: state.view,
-//   };
-// }
+// export default App;
+function mapStateToProps(state) {
+  return {
+    cart: state.cart,
+  };
+}
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     changeView: key => dispatch(navActions.changeView(key)),
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(App);
+export default connect(mapStateToProps)(App);

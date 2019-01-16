@@ -15,9 +15,8 @@ const Cart = props => {
               width: '100%',
               height: 0,
               paddingBottom: '56%',
-              position: 'relative'
-            }}
-          >
+              position: 'relative',
+            }}>
             <iframe
               src="https://giphy.com/embed/xT0xeMA62E1XIlup68"
               width="100%"
@@ -43,8 +42,8 @@ const Cart = props => {
               {props.cart.map((item, i) => (
                 <tr key={i}>
                   <td>
-                    <img src={item.img} />
-                    <p>{item.product}</p>
+                    <img src={item.image} />
+                    <p>{item.name}</p>
                   </td>
                   <td>${(item.cost / 100).toFixed(2)}</td>
                   <td>1</td>
@@ -57,7 +56,13 @@ const Cart = props => {
             <p>&nbsp;$ {props.totalCost}</p>
           </div>
           <Link to="/checkout">
-          <Button className="cta" onClick={() => {props.handleSelect('checkout')}}>Checkout</Button>
+            <Button
+              className="cta"
+              onClick={() => {
+                props.handleSelect('checkout');
+              }}>
+              Checkout
+            </Button>
           </Link>
         </div>
       )}

@@ -4,6 +4,7 @@ import logo from '../assets/img/logo.png';
 import cart from '../assets/img/cart.png';
 import './nav.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const BakeryNav = props => {
   return (
@@ -42,4 +43,10 @@ const BakeryNav = props => {
   );
 };
 
-export default BakeryNav;
+function mapStateToProps(state) {
+  return {
+    cartLength: state.cart.length,
+  };
+}
+
+export default connect(mapStateToProps)(BakeryNav);
