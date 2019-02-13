@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  web:
+    container_name: ecommerceBakery
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
