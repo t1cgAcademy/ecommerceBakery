@@ -1,0 +1,23 @@
+# Demo Part 6 - Bonus
+
+- Instruction order matters
+- We can speed up our process
+- The only change detected is to `index.js`
+
+# Specify base image
+
+# https://hub.docker.com/search?q=&type=image
+
+FROM node:latest
+
+WORKDIR /usr/app
+
+# Install our dependencies
+
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./
+
+# Execute command
+
+CMD ["npm", "start"]

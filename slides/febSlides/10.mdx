@@ -1,0 +1,27 @@
+# Demo Part 5 - Final
+
+- Add WORKDIR instruction to Dockerfile
+- Rebuild: docker build -t tonydecarlo11/febdemo .
+- Run: docker run -p 8080:8080 tonydecarlo11/febdemo
+- Start shell inside container
+- `docker ps` to get container ID
+  `docker exec -it [id] /bin/bash`
+
+#################################
+
+# Specify base image
+
+# https://hub.docker.com/search?q=&type=image
+
+FROM node:latest
+
+WORKDIR /usr/app
+
+# Install our dependencies
+
+COPY ./ ./
+RUN npm install
+
+# Execute command
+
+CMD ["npm", "start"]

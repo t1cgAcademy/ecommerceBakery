@@ -1,0 +1,26 @@
+# Demo Part 3
+
+- Add COPY command
+- COPY "path to folder to copy from" "path inside the container"
+- Tag image
+  docker build -t dockerID/na
+  docker build -t tonydecarlo11/febdemo .
+- Start image
+  docker run tonydecarlo11/febdemo
+- `Listening on port 8080`
+- Let's visit localhost:8080
+
+# Specify base image
+
+# https://hub.docker.com/search?q=&type=image
+
+FROM node:latest
+
+# Install our dependencies
+
+COPY ./ ./
+RUN npm install
+
+# Execute command
+
+CMD ["npm", "start"]

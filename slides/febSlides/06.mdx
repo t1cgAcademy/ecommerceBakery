@@ -1,0 +1,22 @@
+# Demo Part 1
+
+- Create Dockerfile
+- Build Image
+  docker build .
+- Any errors?
+
+#######################
+
+# Specify base image
+
+# https://hub.docker.com/search?q=&type=image
+
+FROM alpine
+
+# Install our dependencies
+
+RUN npm install
+
+# Execute command
+
+CMD ["npm", "start"]
